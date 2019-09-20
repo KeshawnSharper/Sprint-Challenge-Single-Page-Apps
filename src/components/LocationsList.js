@@ -6,8 +6,7 @@ import LocationCard from "./LocationCard"
 export default function LocationsList() {
     const [locations, setLocations] = useState([])
   useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
+    
   Axios.get("https://rickandmortyapi.com/api/location/"
   )
   .then(res => setLocations(res.data.results))
