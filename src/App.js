@@ -10,7 +10,7 @@ import SearchForm from "./components/SearchForm.js";
 
 export default function App() {
 
-  const [name,setName] = useState([{}])
+  
   return (
    
 
