@@ -8,16 +8,8 @@ const FirstLabel = styled.label`
 display:block;
 margin-bottom:3rem;
       `
-      const SecondLabel = styled.label`
-display:block;
-margin-left:1rem;
-margin-bottom:3rem;
-      `
-      const ThridLabel = styled.label`
-display:block;
-margin-left:-2rem;
-margin-bottom:3rem;
-      `
+      
+      
       const FirstInput = styled.input`
 padding:0.5rem;
 display:block;
@@ -26,31 +18,12 @@ margin-top:1rem;
 padding-left:10rem;
 padding-right:10rem;
       `
-      const SecInput = styled.input`
-padding:0.5rem;
-display:block;
-margin-left:27rem
-margin-top:1rem;
-padding-left:10rem;
-padding-right:10rem;
-      `
-      const ThrInput = styled.input`
-padding:0.5rem;
-display:block;
-margin-left:30rem
-margin-top:1rem;
-padding-left:10rem;
-padding-right:10rem;
-      `
+      
+      
      const FirstP = styled.p`
      margin-left:-1rem;
      `
-     const SecondP = styled.p`
-     margin-left:-1rem;
-     `
-     const ThridP = styled.p`
-     margin-left:1.3rem;
-     `
+     
 
 
 const Input = props => {
