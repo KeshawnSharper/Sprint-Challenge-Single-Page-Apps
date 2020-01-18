@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import CharacterCard from "./CharacterCard"
+import { Link } from 'react-router-dom';
 
-export default function CharacterList() {
-
-const [characters, setCharacters] = useState([])
+export default function CharacterCard() {
+  const [characters, setCharacters] = useState([])
+  const [result,setResult] = useState("")
   useEffect(() => {
     
   Axios.get("https://rickandmortyapi.com/api/character/"
@@ -13,10 +13,28 @@ const [characters, setCharacters] = useState([])
   .catch(error => console.log(error))
   
   }, []);
-
+  const handleChange = e => {
+setResult(e.target.value)
+  }
+  const handleSubmit = e => {
+    Axios.get(`https://rickandmortyapi.com/api/character/?name=${result}`
+  )
+  .then(res => setCharacters(res.data.results))
+  .catch(error => console.log(error))
+  e.preventDefault()
+  }
   return (
-    <section className="character-list grid-view">
-      {characters.map(character => <CharacterCard key={character.id} character={character}  />)}
-    </section>
-  );
+   
+   <form onSubmit={handleSubmit}>
+     <button>Submit</button>
+<input value={result} onChange={handleChange} name={"search"}/>
+      {characters.map(i => <div key={i.id}><Link to={`/characters/${i.id}`}><span>{i.name}</span></Link><img src={i.image}></img><p>{i.status}</p></div>)}
+    {/* <span>{props.character.name}</span>
+    <img src={props.character.image} />
+    <p>{props.character.species}{props.character.status}</p> */}
+    
+    </form>
+    )
+
+
 }

@@ -1,14 +1,30 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import jssPluginPropsSort from "jss-plugin-props-sort";
 import Axios from "axios";
 
 export default function EpisodeCard(props) {
-
+  const [episode, setEpisode] = useState([])
+  const [characters,setCharacters] = useState([])
+  useEffect(() => {
+   
+  Axios.get(`https://rickandmortyapi.com/api/episode/${props.match.params.id}`
+  )
+  .then(res => {
+      setCharacters(res.data.characters)
+      setEpisode(res.data)})
+  .catch(error => console.log(error))
+  }, [])
+console.log(characters.length)
   
-  return (<div className="grid-view">
-    <h2>{props.episodes.name}</h2>
-    <span>{props.episodes.air_date}</span>
-     <span>{props.episodes.episode}</span>
-     <button>{props.episodes.characters.length}</button>
-  </div>)
+  return (<div>
+    
+    <h2>Title: {episode.name}</h2>
+   
+    <p>Aired: {episode.air_date}</p>
+   
+     <p>Episode: {episode.episode}</p>
+
+     <p>Characters: {characters.length}</p>
+     
+    </div>)
 }
